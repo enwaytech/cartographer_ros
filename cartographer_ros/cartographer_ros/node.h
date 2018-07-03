@@ -33,6 +33,7 @@
 #include "cartographer_ros/node_constants.h"
 #include "cartographer_ros/node_options.h"
 #include "cartographer_ros/trajectory_options.h"
+#include "cartographer_ros_msgs/InitPose.h"
 #include "cartographer_ros_msgs/FinishTrajectory.h"
 #include "cartographer_ros_msgs/GetTrajectoryStates.h"
 #include "cartographer_ros_msgs/ReadMetrics.h"
@@ -57,6 +58,7 @@ namespace cartographer_ros {
 class Node {
  public:
   Node(const NodeOptions& node_options,
+       const TrajectoryOptions& trajectory_options,
        std::unique_ptr<cartographer::mapping::MapBuilderInterface> map_builder,
        tf2_ros::Buffer* tf_buffer, bool collect_metrics);
   ~Node();
@@ -135,6 +137,9 @@ class Node {
   bool HandleTrajectoryQuery(
       ::cartographer_ros_msgs::TrajectoryQuery::Request& request,
       ::cartographer_ros_msgs::TrajectoryQuery::Response& response);
+  bool HandleInitPose(
+      cartographer_ros_msgs::InitPose::Request& request,
+      cartographer_ros_msgs::InitPose::Response& response);
   bool HandleStartTrajectory(
       cartographer_ros_msgs::StartTrajectory::Request& request,
       cartographer_ros_msgs::StartTrajectory::Response& response);
@@ -176,6 +181,7 @@ class Node {
           cartographer::mapping::PoseGraphInterface::TrajectoryState>&
           valid_states);
   const NodeOptions node_options_;
+  const TrajectoryOptions trajectory_options_;
 
   tf2_ros::TransformBroadcaster tf_broadcaster_;
 
