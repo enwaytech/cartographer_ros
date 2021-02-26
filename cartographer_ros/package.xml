@@ -17,7 +17,7 @@
 
 <package format="2">
   <name>cartographer_ros</name>
-  <version>1.0.0</version>
+  <version>1.0.6</version>
   <description>
     Cartographer is a system that provides real-time simultaneous localization
     and mapping (SLAM) in 2D and 3D across multiple platforms and sensor
@@ -42,7 +42,7 @@
   <build_depend>python3-sphinx</build_depend>
 
   <depend version_gte="1.0.0">cartographer</depend>
-  <depend version_gte="1.0.0">cartographer_ros_msgs</depend>
+  <depend version_gte="1.0.6">cartographer_ros_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>libgflags-dev</depend>
   <depend>libgoogle-glog-dev</depend>
